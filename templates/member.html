@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- flask css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/member.css') }}">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <!-- Active Members Card -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-4">
+            <div class="card p-4 text-center count-card">
+                <h5 class="text-muted">Active Members</h5>
+                <h1 class="text-success">{{ active_count }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Members Table -->
+    <div class="card p-4">
+        <h4 class="mb-3">Members List</h4>
+        <form method="get" action="/search" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Enter the name" value="{{ request.args.get('search', '') }}">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+        {}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Paid amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {%if members%}
+                    {% for member in members %}
+                    <tr>
+                        <td>{{ member.name }}</td>
+                        <td>{{ member.Email }}</td>
+                        <td>{{ member.mobile_number }}</td>
+                        <td>{{ member.Fees }}</td>
+                        <td>
+                            {{member.status}}
+                        </td>
+                        <td>
+                            <form action="/delete-member/{{ member.id }}" method="post" onsubmit="return confirm('Are you sure you want to delete this member?');">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">No members found.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+ <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

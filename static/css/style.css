@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Laptop / Desktop */
+body {
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("../images/gym.png") no-repeat center 35% / cover;
+  min-height: 100vh;
+  background-attachment: scroll;
+  background-size: 1500px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  body {
+    background-position: center 50%;
+    background-attachment:scroll;
+  }
+  .login-card{
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glassy login card */
+.login-card {
+  background: rgba(255, 255, 255, 0.25); /* glass white */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* Input fields glass effect */
+.login-card input {
+  background: rgba(255, 255, 255, 0.75);
+  border: none;
+  border-radius: 8px;
+}
+
+.login-card input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: none;
+  outline: none;
+}
+
+/* Labels color */
+.login-card label {
+  font-weight: 500;
+}
+
+/* Animation */
+.login-card {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-section {
+  background: url("../images/gym.png") no-repeat center center;
+  background-size: contain;
+  background-color: #000;
+  min-height: 100vh;
+  margin-top: 56px; /* navbar height */
+}
