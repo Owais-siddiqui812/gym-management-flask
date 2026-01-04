@@ -15,9 +15,9 @@ db=SQLAlchemy(app)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT']=587
 app.config['MAIL_USE_TLS']=True
-app.config['MAIL_USERNAME']='owaissidd001@gmail.com'
-app.config['MAIL_PASSWORD']='sgsh tejq unrx vxwl'
-app.config['MAIL_DEFAULT_SENDER']='owaissidd001@gmail.com'
+app.config['MAIL_USERNAME']='Your email addres'
+app.config['MAIL_PASSWORD']='Your App mail passowrd'
+app.config['MAIL_DEFAULT_SENDER']='Your email addres"
 
 mail=Mail(app)
 
